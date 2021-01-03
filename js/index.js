@@ -16,8 +16,8 @@ function getAllProducts() {
         .then(function (response) {
             let products = JSON.parse(response); // Place les produits dans un tableau products
 
-            for (let product of products) {
-                const newTeddie = new Teddie(product.colors, product._id, product.name, product.price, product.description, product.imageUrl);
+            for (let product of Products) {
+                const newTeddie = new Teddie(Products.colors, Products._id, Products.name, Products.price, Products.description, Products.imageUrl);
                 document.getElementById("main").appendChild(newTeddie.createHtmlBlock());
             }
         })
@@ -27,3 +27,16 @@ function getAllProducts() {
         });
         console.log("ici");
 }
+
+class Products {
+	constructor(colors, _id, name, price, imageUrl, description) {
+		this.colors = colors;
+		this._id = _id;
+		this.name = name;
+		this.price = price;
+		this.imageUrl = imageUrl;  
+	  	this.description = description;
+	  
+	}
+}
+  
