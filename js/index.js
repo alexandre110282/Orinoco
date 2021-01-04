@@ -14,10 +14,10 @@ let getListOfProductsFromApi = new Promise(function (resolve, reject) {
 function getAllProducts() {
     getListOfProductsFromApi
         .then(function (response) {
-            let Teddies = JSON.parse(response); // Place les produits dans un tableau products
+            let products = JSON.parse(response); // Place les produits dans un tableau products
 
-            for (let Teddie of Teddies) {
-                const newTeddie = new Teddie(Teddies.colors, Teddies._id, Teddies.name, Teddies.price, Teddies.description, Teddies.imageUrl);
+            for (let product of products) {
+                const newTeddie = new Teddie(products.colors, products._id, products.name, products.price, products.description, products.imageUrl);
                 document.getElementById("main").appendChild(newTeddie.createHtmlBlock());
             }
         })
@@ -28,7 +28,7 @@ function getAllProducts() {
         console.log("ici");
 }
 
-class Teddies {
+class Teddie {
 	constructor(colors, _id, name, price, imageUrl, description) {
 		this.colors = colors;
 		this._id = _id;
