@@ -6,7 +6,7 @@ let getListOfProductsFromApi = new Promise(function (resolve, reject) {
         } else if (this.readyState == XMLHttpRequest.DONE && this.status != 200) {
             reject(this.status);
         }
-    }
+    };
     request.open("GET", "http://localhost:3000/api/teddies");
     request.send();
 });
@@ -14,10 +14,10 @@ let getListOfProductsFromApi = new Promise(function (resolve, reject) {
 function getAllProducts() {
     getListOfProductsFromApi
         .then(function (response) {
-            let products = JSON.parse(response); // Place les produits dans un tableau products
+            let Teddies = JSON.parse(response); // Place les produits dans un tableau products
 
-            for (let product of Products) {
-                const newTeddie = new Teddie(Products.colors, Products._id, Products.name, Products.price, Products.description, Products.imageUrl);
+            for (let Teddie of Teddies) {
+                const newTeddie = new Teddie(Teddies.colors, Teddies._id, Teddies.name, Teddies.price, Teddies.description, Teddies.imageUrl);
                 document.getElementById("main").appendChild(newTeddie.createHtmlBlock());
             }
         })
@@ -28,7 +28,7 @@ function getAllProducts() {
         console.log("ici");
 }
 
-class Products {
+class Teddies {
 	constructor(colors, _id, name, price, imageUrl, description) {
 		this.colors = colors;
 		this._id = _id;
@@ -39,4 +39,3 @@ class Products {
 	  
 	}
 }
-  
